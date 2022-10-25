@@ -1,6 +1,6 @@
 section .data
-    ve1: dd 1,2,3
-    ve2: dd 2,2,1
+    ve1: dd 1,2,1
+    ve2: dd 9,1,1
 
 section .text
     global _start
@@ -12,15 +12,34 @@ _start:
     mov ecx,1
     mov eax,0
     mov [sum],eax ;init the result of the dot product
+
 loop:
     mov [con],ecx
     mov eax,[ebx] ;Element of vec1
     mov ecx,[edx] ;Element of vec2
     mul ecx
+
+    ; odd or even
+    mov ecx, [con]
+    and ecx, 1
+    jz even
+    jmp odd
+
+even:
+    ; Add to the result
+    mov ebx,[sum]
+    sub ebx,eax
+    mov [sum],ebx
+    jmp continue
+
+odd:
     ; Add to the result
     mov ebx,[sum]
     add eax,ebx
     mov [sum],eax
+    jmp continue
+
+continue:
     ; Move the address 4 units each cicle, i.e. 4,8,12,...
     mov ecx,[con]
     mov eax,4
@@ -53,4 +72,3 @@ loop:
 section .bss
     sum resd 1
     con resd 1
-    
