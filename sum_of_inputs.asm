@@ -109,7 +109,7 @@ continue:
     mov eax, [sum]
     add eax, '0'
     mov [sum], eax
-
+    
     mov eax, 4
     mov ebx, 1
     mov ecx, sum
