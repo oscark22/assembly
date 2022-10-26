@@ -1,5 +1,5 @@
 section .data
-    ve1: dd 1,4,0
+    ve1: dd 1,10,4
     ve2: dd 1,1,1
     msg1: dd '', 10
     msg2: dd '-'
@@ -58,7 +58,9 @@ continue:
 
 comparations:
     mov eax, [sum]
-
+    
+    ; this was not my idea
+    ; better to mult by -1 and print '-'
     cmp eax, -1
     je forty_seven
     cmp eax, -2

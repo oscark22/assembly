@@ -107,6 +107,9 @@ increase:
 
 continue:
     mov eax, [sum]
+    mov ebx, 4
+    div ebx
+
     add eax, '0'
     mov [sum], eax
     
@@ -121,5 +124,5 @@ continue:
     int 0x80
 
 section .bss
-    sum resb 1
-    var resb 1
+    sum resd 1
+    var resd 1

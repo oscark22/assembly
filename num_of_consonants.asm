@@ -1,5 +1,5 @@
 section .data
-    wrd: dd 'Armando'
+    wrd: dd 'GAbriella'
     msg1: dd 'The number of consonants is the following', 10
     len1: equ $-msg1
     msg2: dd '0'
@@ -14,7 +14,7 @@ _start:
     mov ebx, wrd
     mov al, [ebx]
 
-    mov ecx, 7
+    mov ecx, 9
 
 loop:
     call check_consonant
